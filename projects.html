@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Shagun Porwal</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Project Modal Styles */
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .project-modal.active {
+            display: flex;
+        }
+        .project-modal-content {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .project-modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 2rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            z-index: 10;
+            width: 40px; height: 40px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .project-modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        .project-modal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        .project-modal-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        .project-modal-image-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        .project-modal-body {
+            padding: 30px;
+        }
+        .project-modal-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(140, 156, 146, 0.1);
+            color: var(--primary-color);
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .project-modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .project-modal-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .project-modal-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .project-modal-video {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="./index.html" class="nav-logo">
+                <span class="logo-icon" style="background: transparent; overflow: hidden;"><img src="./images/logo.png" style="width: 100%; height: 100%; object-fit: contain;" alt="SP Logo"></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li><a href="./skills.html" class="nav-link">Skills</a></li>
+                <li><a href="./projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="./about.html" class="nav-link">About</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li><a href="./admin/login.html" class="nav-link admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="projects-section page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Projects</h2>
+                <p class="section-subtitle">Showcasing Creative Excellence</p>
+            </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="vfx">VFX</button>
+                <button class="filter-btn" data-filter="editing">Video Editing</button>
+                <button class="filter-btn" data-filter="ai">AI Films</button>
+                <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal-content">
+            <div class="project-modal-close" onclick="closeModal()">&times;</div>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Shagun Porwal</h3>
+                    <p>VFX Artist | Video Editor | AI Filmmaker</p>
+                </div>
+                <div class="footer-links">
+                    <a href="./index.html">Home</a>
+                    <a href="./skills.html">Skills</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://youtube.com/@sp.creative.studio?si=WKUOGk6uPbgOpHPA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/sp.creative.studio?igsh=MWEwM3NvZDR4N2JjYg==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.behance.net/shagunporwal" target="_blank"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shagun Porwal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/navbar.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectsGrid = document.getElementById('projectsGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('projectModal');
+        const modalContent = document.getElementById('modalContent');
+
+        let projects = JSON.parse(localStorage.getItem('portfolioProjects')) || [];
+
+        if (projects.length === 0) {
+            projects = [
+                { id: 1, title: 'Cinematic VFX Reel', category: 'vfx', description: 'Visual effects showcase using After Effects.', image: null, video: null },
+                { id: 2, title: 'Brand Commercial Edit', category: 'editing', description: 'Professional editing for brand commercial.', image: null, video: null },
+                { id: 3, title: 'AI Generated Film', category: 'ai', description: 'Experimental film using Runway and Midjourney.', image: null, video: null },
+                { id: 4, title: 'Motion Graphics Intro', category: 'motion', description: 'Dynamic intro sequence for YouTube channel.', image: null, video: null },
+                { id: 5, title: 'Photo Manipulation', category: 'vfx', description: 'Advanced compositing using Photoshop.', image: null, video: null },
+                { id: 6, title: 'Documentary Edit', category: 'editing', description: 'Documentary with color grading and sound.', image: null, video: null }
+            ];
+        }
+
+        function renderProjects(filter = 'all') {
+            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+
+            if (filtered.length === 0) {
+                projectsGrid.innerHTML = `
+                    <div class="no-projects">
+                        <i class="fas fa-folder-open"></i>
+                        <h3>No Projects Yet</h3>
+                        <p>Upload projects from the Admin panel to see them here.</p>
+                        <a href="./admin/login.html" class="btn btn-primary" style="margin-top:20px;">Go to Admin</a>
+                    </div>`;
+                return;
+            }
+
+            projectsGrid.innerHTML = filtered.map(project => `
+                <div class="project-card" data-category="${project.category}" onclick="openProject(${project.id})" style="cursor: pointer;">
+                    <div class="project-image">
+                        ${project.image ? 
+                            `<img src="${project.image}" alt="${project.title}" loading="lazy">` : 
+                            `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;background:linear-gradient(135deg, var(--primary-light), var(--primary-color));">
+                                <i class="fas fa-photo-video" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                <span style="font-size:0.9rem;">${project.title}</span>
+                             </div>`
+                        }
+                        <div class="project-overlay">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">${project.category}</span>
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="project-btn project-btn-view">View Project</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.openProject = function(id) {
+            const project = projects.find(p => p.id === id);
+            if (!project) return;
+
+            modalContent.innerHTML = `
+                ${project.image ? 
+                    `<img src="${project.image}" class="project-modal-image" alt="${project.title}">` :
+                    `<div class="project-modal-image-placeholder">
+                        <i class="fas fa-photo-video"></i>
+                        <h2>${project.title}</h2>
+                     </div>`
+                }
+                <div class="project-modal-body">
+                    <span class="project-modal-category">${project.category}</span>
+                    <h2 class="project-modal-title">${project.title}</h2>
+                    <p class="project-modal-date"><i class="fas fa-calendar"></i> ${project.date || 'Recently'}</p>
+                    <p class="project-modal-description">${project.description}</p>
+                    ${project.video ? `<video src="${project.video}" class="project-modal-video" controls></video>` : ''}
+                </div>
+            `;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        // Close modal on outside click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProjects(this.dataset.filter);
+            });
+        });
+
+        renderProjects();
+    });
+    </script>
+</body>
+</html>

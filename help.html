@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Upload | Shagun Porwal</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .help-section { padding: 120px 0 80px; }
+        .help-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        .help-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        .help-card ol, .help-card ul {
+            margin-left: 20px;
+            color: var(--text-light);
+            line-height: 2;
+        }
+        .help-card li {
+            margin-bottom: 10px;
+        }
+        .help-card code {
+            background: var(--bg-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--primary-dark);
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        .warning-box i { color: #ffc107; margin-right: 10px; }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        .success-box i { color: #28a745; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="./index.html" class="nav-logo">
+                <span class="logo-icon" style="background: transparent; overflow: hidden;"><img src="./images/logo.png" style="width: 100%; height: 100%; object-fit: contain;" alt="SP Logo"></span>
+                
+            </a>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li><a href="./skills.html" class="nav-link">Skills</a></li>
+                <li><a href="./projects.html" class="nav-link">Projects</a></li>
+                <li><a href="./about.html" class="nav-link">About</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li><a href="./admin/login.html" class="nav-link admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How to Upload Projects</h2>
+                <p class="section-subtitle">Step-by-step guide for admin panel</p>
+            </div>
+
+            <div class="help-card">
+                <h3><i class="fas fa-sign-in-alt"></i> Step 1: Login to Admin Panel</h3>
+                <ol>
+                    <li>Go to <a href="./admin/login.html" style="color:var(--primary-color);">Admin Login Page</a></li>
+                    <li>Enter username: <code>admin</code></li>
+                    <li>Enter password: <code>shagun123</code></li>
+                    <li>Click "Login" button</li>
+                </ol>
+            </div>
+
+            <div class="help-card">
+                <h3><i class="fas fa-cloud-upload-alt"></i> Step 2: Upload a Project</h3>
+                <ol>
+                    <li>Click on "Upload Project" in the left sidebar</li>
+                    <li>Fill in the <strong>Project Title</strong> (required)</li>
+                    <li>Select a <strong>Category</strong> from dropdown (required):
+                        <ul>
+                            <li>VFX</li>
+                            <li>Video Editing</li>
+                            <li>AI Films</li>
+                            <li>Motion Graphics</li>
+                        </ul>
+                    </li>
+                    <li>Select an <strong>Image file</strong> for thumbnail (required)
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>Important:</strong> Image must be less than 2MB. Supported formats: JPG, PNG, WebP
+                        </div>
+                    </li>
+                    <li>(Optional) Select a <strong>Video file</strong>
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>Important:</strong> Video must be less than 10MB. Supported formats: MP4, WebM
+                        </div>
+                    </li>
+                    <li>Add a <strong>Description</strong> about your project (optional but recommended)</li>
+                    <li>Click "Upload Project" button</li>
+                </ol>
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i>
+                    After upload, you'll see a green success message. The project will appear on the Projects page and Homepage automatically!
+                </div>
+            </div>
+
+            <div class="help-card">
+                <h3><i class="fas fa-photo-video"></i> Step 3: View Your Projects</h3>
+                <ol>
+                    <li>Click "Manage Projects" in the sidebar to see all uploaded projects</li>
+                    <li>You can delete projects from here using the trash icon</li>
+                    <li>Go to <a href="./projects.html" style="color:var(--primary-color);">Projects Page</a> to see how visitors will see your work</li>
+                </ol>
+            </div>
+
+            <div class="help-card">
+                <h3><i class="fas fa-envelope"></i> Step 4: Check Messages</h3>
+                <ol>
+                    <li>Click "Messages" in the sidebar</li>
+                    <li>See all contact form submissions from visitors</li>
+                    <li>Reply to emails directly from the email addresses shown</li>
+                </ol>
+            </div>
+
+            <div class="help-card">
+                <h3><i class="fas fa-lightbulb"></i> Tips for Best Results</h3>
+                <ul>
+                    <li>Use high-quality but compressed images for faster loading</li>
+                    <li>Recommended thumbnail size: 800x600 pixels</li>
+                    <li>Keep videos short (under 10MB) for better performance</li>
+                    <li>Use descriptive titles so visitors understand your work</li>
+                    <li>Categorize correctly so projects appear in right filters</li>
+                </ul>
+            </div>
+
+            <div style="text-align:center; margin-top:40px;">
+                <a href="./admin/login.html" class="btn btn-primary"><i class="fas fa-lock"></i> Go to Admin Panel</a>
+                <a href="./index.html" class="btn btn-secondary" style="margin-left:15px;">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Shagun Porwal</h3>
+                    <p>VFX Artist | Video Editor | AI Filmmaker</p>
+                </div>
+                <div class="footer-links">
+                    <a href="./index.html">Home</a>
+                    <a href="./skills.html">Skills</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://youtube.com/@sp.creative.studio?si=WKUOGk6uPbgOpHPA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/sp.creative.studio?igsh=MWEwM3NvZDR4N2JjYg==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    
+                    <a href="https://www.behance.net/shagunporwal" target="_blank"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shagun Porwal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/navbar.js"></script>
+</body>
+</html>

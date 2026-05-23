@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Shagun Porwal</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .about-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 25px rgba(140, 156, 146, 0.4);
+            overflow: hidden;
+            border: 4px solid white;
+        }
+        .about-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .about-logo i {
+            font-size: 3rem;
+            color: white;
+        }
+        .logo-text-main {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        .logo-text-sub {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        .about-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .about-photo-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+        .about-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            border: 3px solid var(--primary-color);
+            border-radius: 20px;
+            z-index: -1;
+        }
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-badge {
+            position: absolute;
+            bottom: 20px;
+            right: -10px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .tools-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .tool-tag {
+            background: rgba(140, 156, 146, 0.1);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tool-tag i {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="./index.html" class="nav-logo">
+                <span class="logo-icon" style="background: transparent; overflow: hidden;"><img src="./images/logo.png" style="width: 100%; height: 100%; object-fit: contain;" alt="SP Logo"></span>
+                
+            </a>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li><a href="./skills.html" class="nav-link">Skills</a></li>
+                <li><a href="./projects.html" class="nav-link">Projects</a></li>
+                <li><a href="./about.html" class="nav-link active">About</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li><a href="./admin/login.html" class="nav-link admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-section page-section">
+        <div class="container">
+            <!-- Logo only - NO name text below -->
+            <div class="about-logo-section">
+                <div class="about-logo">
+                    <img src="./images/logo.png" alt="Shagun Porwal Logo">
+                </div>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image-container">
+                    <div class="about-photo-frame">
+                        <img src="./images/shagun-photo.png" class="about-photo" alt="Shagun Porwal">
+                    </div>
+                    <div class="photo-badge">1+ Years Exp.</div>
+                </div>
+
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <h3 class="about-name">Shagun Porwal</h3>
+                    <p class="about-role">VFX Artist | Video Editor | AI Filmmaker</p>
+                    <div class="about-description">
+                        <p>I am a passionate visual effects artist and video editor with expertise in creating stunning visual content. My journey in the world of digital creativity spans across traditional filmmaking and cutting-edge AI-powered content creation.</p>
+                        <p>With proficiency in industry-standard tools like Adobe After Effects, Premiere Pro, and Photoshop, combined with innovative AI filmmaking techniques, I bring stories to life through compelling visuals and seamless editing.</p>
+                        <p>Whether it's crafting breathtaking visual effects, editing cinematic sequences, or exploring the frontiers of AI-generated content, I'm dedicated to pushing creative boundaries and delivering exceptional results.</p>
+                    </div>
+
+                    <div class="tools-tags">
+                        <span class="tool-tag"><i class="fab fa-adobe"></i> After Effects</span>
+                        <span class="tool-tag"><i class="fas fa-photo-video"></i> Premiere Pro</span>
+                        <span class="tool-tag"><i class="fas fa-image"></i> Photoshop</span>
+                        <span class="tool-tag"><i class="fas fa-brain"></i> AI Tools</span>
+                        <span class="tool-tag"><i class="fas fa-palette"></i> Color Grading</span>
+                    </div>
+
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Shagun Porwal</h3>
+                    <p>VFX Artist | Video Editor | AI Filmmaker</p>
+                </div>
+                <div class="footer-links">
+                    <a href="./index.html">Home</a>
+                    <a href="./skills.html">Skills</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://youtube.com/@sp.creative.studio?si=WKUOGk6uPbgOpHPA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/sp.creative.studio?igsh=MWEwM3NvZDR4N2JjYg==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    
+                    <a href="https://www.behance.net/shagunporwal" target="_blank"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shagun Porwal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/navbar.js"></script>
+</body>
+</html>
